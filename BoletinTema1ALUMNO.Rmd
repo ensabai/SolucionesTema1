@@ -92,16 +92,23 @@ b.  Usa las funciones **dim, head, tail, str** para una primera visión de los c
 c.  Muestra los nombres de las filas y las columnas (**rownames**, **colnames**)
 
 ```{r}
+#Mammals
+help(mammals)
+dim(mammals)
+head(mammals)
+tail(mammals)
+str(mammals)
+rownames(mammals)
+colnames(mammals)
 
-
-
-
-
-
-
-
-
-
+#Animals2
+help(Animals2)
+dim(Animals2)
+head(Animals2)
+tail(Animals2)
+str(Animals2)
+rownames(Animals2)
+colnames(Animals2)
 
 
 
@@ -114,9 +121,9 @@ c.  Muestra los nombres de las filas y las columnas (**rownames**, **colnames**)
 d.  Usa la función **intersect** y almacena en la variable *commonAnimals* los aminales que aparezcan en ambos conjuntos
 
 ```{r}
-
-
-
+commonAnimals <- intersect(mammals,Animals2)
+rownames(commonAnimals)
+nrow(commonAnimals)
 
 
 
@@ -125,10 +132,14 @@ d.  Usa la función **intersect** y almacena en la variable *commonAnimals* los 
 e.  Usa **setdiff** para averiguar qué animales no están en ambos conjuntos. ¿Cuántos son ?. ¿Qué tipo de animales son?
 
 ```{r}
-
-
-
-
+#Animales que están en mammals pero no en Animals2
+animales1 <- setdiff(mammals,Animals2)
+rownames(animales1)
+#No hay ningún animal 
+#Animales que están Animals2 pero no en mammals
+animales2 <- setdiff(Animals2,mammals)
+rownames(animales2)
+#Son dinosaurios
 
 
 ```
@@ -136,7 +147,8 @@ e.  Usa **setdiff** para averiguar qué animales no están en ambos conjuntos. �
 e.  Determina las diferencia entre los animales que no aparecen en ambos conjuntos.
 
 ```{r}
-
+animales1
+animales2
 
 
 
