@@ -168,7 +168,7 @@ animales2
 ```{r}
 qqPlot(log(mammals$brain))
 qqPlot(log(Animals2$brain))
-#Se muestra una diferencia en la pendiente de la recta del segundo gráfico (Animals2) debido a los datos de
+#Se muestra una diferencia en la pendiente de la recta del segundo gráfico (Animals2) debido a los datos del Dipliodocus, Triceratops y Brachiosaurus
 #Ambas presentan una ditribución Gaussiana ya que se mantienen en el interior de las líneas discontinuas
 ```
 
@@ -179,8 +179,16 @@ qqPlot(log(Animals2$brain))
     c.  Determina el número de librerías que tienes instaladas.
 
     ```{r}
-
-
+libReturn <- library()
+libReturn
+#Se tiene una lista de tres elementos.
+#El primer elemento muestra que no tiene cabecera
+#El segundo elemento el números de librerías instaladas
+#El tercer elemento que no tiene pie de página
+#Muestra en una lista el número de paquetes en librería disponibles
+head(libReturn$results, 5)
+nrow(libReturn$results)
+#Se tienen instaladass 286 librerías
 
 
 
