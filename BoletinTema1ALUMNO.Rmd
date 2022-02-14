@@ -139,6 +139,7 @@ rownames(animales1)
 #Animales que están Animals2 pero no en mammals
 animales2 <- setdiff(Animals2,mammals)
 rownames(animales2)
+#Hay tres animales que no están incluidos en mammals
 #Son dinosaurios
 
 
@@ -165,8 +166,10 @@ animales2
 2.  La funcion **qqPlot** del paquete **car** puede ser utilizada para determinar gráficamente si una serie de puntos siguen una distribución de datos Gaussiana. Si las muestras están dentro de las líneas discontinuas podemos indicar que siguen una distribución Gaussiana con un 95 % de confianza. Utilizando esta función representa el logaritmo neperiano (**log**) del peso del cerebro (**brain weigths**) del registro de datos **mammals** del paquete **MASS** y conjunto de datos **Animals2** de la librería **robustbase**. ¿Presentan el mismo comportamiento ?.¿Podríamos decir que siguen una distribución Gaussiana ?
 
 ```{r}
-
-
+qqPlot(log(mammals$brain))
+qqPlot(log(Animals2$brain))
+#Se muestra una diferencia en la pendiente de la recta del segundo gráfico (Animals2) debido a los datos de
+#Ambas presentan una ditribución Gaussiana ya que se mantienen en el interior de las líneas discontinuas
 ```
 
 3.  La función **library** sin argumentos abre una ventana y muestra las librerías que han sido instaladas.
