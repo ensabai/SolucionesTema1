@@ -199,8 +199,24 @@ nrow(libReturn$results)
     d.  Utiliza la función **summary**, sobre **cabbages** y **Chile** y observa como, además de otros estadísticos, también devuelve el número de valores perdidos de cada variable.
 
 ```{r}
-
-
+library(MASS)
+dim(cabbages)
+str(cabbages)
+nombres <- colnames(cabbages)
+for (c in nombres){
+  print(c)
+  print(sum(is.na(cabbages$c)*1))
+}
+library(car)
+dim(Chile)
+str(Chile)
+nombres <- colnames(Chile)
+for (c in nombres){
+  print(c)
+  print(sum(is.na(Chile$c)*1))
+}
+summary(cabbages)
+summary(Chile)
 
 
 
