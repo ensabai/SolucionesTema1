@@ -179,16 +179,16 @@ qqPlot(log(Animals2$brain))
     c.  Determina el número de librerías que tienes instaladas.
 
     ```{r}
-libReturn <- library()
-str(libReturn)
-#Se tiene una lista de tres elementos.
-#El primer elemento muestra que no tiene cabecera
-#El segundo elemento el números de librerías instaladas
-#El tercer elemento que no tiene pie de página
-#Muestra en una lista el número de paquetes en librería disponibles
-head(libReturn$results, 5)
-nrow(libReturn$results)
-#Se tienen instaladas 286 librerías
+    libReturn <- library()
+    str(libReturn)
+    #Se tiene una lista de tres elementos.
+    #El primer elemento muestra que no tiene cabecera
+    #El segundo elemento el números de librerías instaladas
+    #El tercer elemento que no tiene pie de página
+    #Muestra en una lista el número de paquetes en librería disponibles
+    head(libReturn$results, 5)
+    nrow(libReturn$results)
+    #Se tienen instaladas 286 librerías
     ```
 
 4.  En las transparencias del tema 1 se citan los primeros pasos a seguir cuando se analiza un nuevo conjunto de datos.
@@ -278,7 +278,7 @@ hist(cabbages$VitC[cabbages$Cult == "c52"])
 #Diagrama de dispersión global.
 plot(whiteside$Temp, whiteside$Gas)
 #Diagrama de dispersión etiquetando según un factor.
-plot(whiteside$Temp, whiteside$Gas, pch=c(6,16)[whiteside\$Insul])
+plot(whiteside$Temp, whiteside$Gas,pch=c(6,16)[whiteside$Insul])
 legend(x="topright",legend=c("Insul = Before","Insul = After"), pch=c(6,16))
 # Planteamos 2 modelos lineales, uno para los datos de cada factor
 Model1 <- lm(Gas ~ Temp, data = whiteside, subset = which(Insul == "Before"))
@@ -307,7 +307,19 @@ a.  Utiliza un procedimiento análogo para determinar si se aprecia una relació
 b.  Repite el apartado anterior, pero obteniendo un modelo para cada una de las dos variedades de calabaza, **Cult**. Ver[Parámetros básicos plot](https://www.statmethods.net/advgraphs/parameters.html).
 
 ```{r}
-
+#Diagrama de dispersión global.
+plot(cabbages$HeadWt, cabbages$VitC)
+#Diagrama de dispersión etiquetando según un factor.
+plot(cabbages$HeadWt, cabbages$VitC,pch=c(6,16)[cabbages$Cult])
+legend(x="topright",legend=c("Cult = c39","Cult = c52"), pch=c(6,16))
+# Planteamos 3 modelos lineales, uno para los datos cada factor y uno para el conjunto
+Model1 <- lm(VitC ~ HeadWt, data = cabbages, subset = which(Cult == "c39"))
+Model2 <- lm(VitC ~ HeadWt, data = cabbages, subset = which(Cult == "c52"))
+Model3 <- lm(VitC ~ HeadWt, data = cabbages)
+# Representamos las rectas correspondientes a cada modelo lineal
+abline(Model1, lty=2)
+abline(Model2)
+abline(Model3, col=3)
 
 
 
@@ -328,7 +340,9 @@ b.  Repite el apartado anterior, pero obteniendo un modelo para cada una de las 
 c.  Usa **summary** con cada uno de los modelos obtenidos y observa **Coefficients**. Dado que hemos planteado un modelo $y=mx+n$, donde $y=VitC$ y $x=HeadWt$. La función **lm** nos permite obtener **(Intercept)**; **n** y la pendiente **HeadWt**; **m** (además de otros parámetros adicionales que evalúan la caracterísiticas del modelo). Observa que en todos los casos, la pendiene es negativa indicando que las calabazas de más peso contienen menos vitamina C. No te preocupes por el resto de parámetros del modelo, por el momento.
 
 ```{r}
-
+summary(Model3)
+summary(Model2)
+summary(Model1)
 
 
 ```
