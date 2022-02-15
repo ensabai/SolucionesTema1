@@ -199,22 +199,29 @@ nrow(libReturn$results)
     d.  Utiliza la función **summary**, sobre **cabbages** y **Chile** y observa como, además de otros estadísticos, también devuelve el número de valores perdidos de cada variable.
 
 ```{r}
+#Conjunto de datos cabbages
 library(MASS)
 dim(cabbages)
 str(cabbages)
 nombres <- colnames(cabbages)
+#Se tienen 60 filas y 4 columnas (variables)
 for (c in nombres){
   print(c)
   print(sum(is.na(cabbages$c)*1))
 }
+#No hay ningún valor perdido
+
+#Conjunto de datos Chile
 library(car)
 dim(Chile)
 str(Chile)
 nombres <- colnames(Chile)
+#Se tienen 2700 filas y 8 columna (variables)
 for (c in nombres){
   print(c)
   print(sum(is.na(Chile$c)*1))
 }
+#No hay ningún valor perdido
 summary(cabbages)
 summary(Chile)
 
@@ -247,7 +254,10 @@ summary(Chile)
 5.  Muchas pruebas estadísticas suponen que los datos siguen una distribución Gaussiana. Utiliza la aproximación visual proporcionada por **qqPlot** para determinar si podemos asumir que las variables **HeadWt** y **VitC** del conjunto **cabbages** verifican esta condición.
 
 ```{r}
-
+qqPlot(cabbages$HeadWt)
+#La mayoría de valores están en el interior de las líneas discontinuas aunque hasta en 4 ocasiones las llega a tocar
+qqPlot(cabbages$VitC)
+#Sí cumple la distribución Gaussiana pues todos sus valores se encuentran entre las líneas discontinuas
 
 
 
